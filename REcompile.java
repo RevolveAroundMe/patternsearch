@@ -32,6 +32,8 @@ public class REcompile {
     void parse(){
         int initial;
         initial= expression();
+        if(p.isEmpty()) throw new Error("no regex");
+        state=set_state(state, ' ', 0, 0);
     }
 
     int factor(){

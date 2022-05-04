@@ -1,9 +1,28 @@
+import java.io.*;
+import java.util.ArrayList;
 /**
  * REsearch
  */
 public class REsearch {
+    ArrayList<Character> ch= new ArrayList<Character>();
+    ArrayList<Integer> next1=new ArrayList<Integer>();
+    ArrayList<Integer> next2=new ArrayList<Integer>();
     public static void main(String[] args) {
+        REsearch RES=new REsearch();  
+        String line;
+        File file=new File("testing std input.txt");
         
+        try {
+            FileWriter fWriter=new FileWriter(file);
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            while (br!=null) {
+                line=br.readLine();
+                fWriter.append(line+'\n');
+                System.err.println("looping");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public REsearch() {
     }
@@ -20,7 +39,8 @@ public class REsearch {
 
         }
 
-        Dnode pop(){
+        
+        Dnode pop(){//Removes first item in que and returns it
             if(isEmpty()) return null;
             Dnode temp=head; 
             head=head.next;
@@ -29,7 +49,7 @@ public class REsearch {
         }
 
 
-        void push(String state_){
+        void push(String state_){//Puts a new node at the front of the que
             Dnode temp= new Dnode();
             temp.state=state_;
 
@@ -47,7 +67,7 @@ public class REsearch {
             }
 
 
-        void put(String state_){
+        void put(String state_){//Puts a new node at the back of the que
             Dnode temp= new Dnode();
             temp.state=state_;
 
@@ -66,7 +86,7 @@ public class REsearch {
         }
         
         
-        boolean isEmpty(){
+        boolean isEmpty(){//Checks if the Deque is empty
             if(head==null) return true;
             return false;
         }
